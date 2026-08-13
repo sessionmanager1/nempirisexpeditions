@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nempiris Expeditions — Luxury Safari Journeys</title>
+<meta name="description" content="Nempiris Expeditions — bespoke luxury safari journeys across Kenya and Tanzania. Game drives, balloon safaris, sundowners, cultural visits and the Great Migration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#7A1315;
+    --red-deep:#560D0F;
+    --red-light:#A2231F;
+    --gold:#C79A3E;
+    --gold-light:#E8CB7A;
+    --gold-dim:#8a6c2d;
+    --cream:#FBF6EC;
+    --cream-dim:#F1E8D6;
+    --white:#FFFFFF;
+    --ink:#231512;
+    --ink-soft:#5b433c;
+    --shadow:0 20px 50px -20px rgba(35,21,18,0.35);
+    --shadow-sm:0 10px 25px -12px rgba(35,21,18,0.28);
+    --radius:18px;
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Jost',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Playfair Display',serif;
+    margin:0;
+    color:var(--ink);
+    letter-spacing:0.2px;
+  }
+  p{margin:0;line-height:1.7;color:var(--ink-soft);}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  ul{list-style:none;margin:0;padding:0;}
+  button{font-family:inherit;cursor:pointer;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12.5px;letter-spacing:3.5px;text-transform:uppercase;
+    color:var(--gold-dim);font-weight:600;margin-bottom:14px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);display:inline-block;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .section-head h2{font-size:clamp(30px,4vw,46px);font-weight:700;line-height:1.15;}
+  .section-head p{margin-top:16px;font-size:16.5px;}
+  section{position:relative;padding:110px 0;}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ===== Scroll progress ===== */
+  #progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--red-light));z-index:1200;width:0%;transition:width .1s linear;}
+
+  /* ===== Header ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    padding:16px 0;
+    transition:background .4s ease, box-shadow .4s ease, padding .4s ease;
+  }
+  header.scrolled{background:rgba(251,246,236,0.96);backdrop-filter:blur(10px);box-shadow:0 8px 30px -18px rgba(0,0,0,.4);padding:10px 0;}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand-badge{
+    width:56px;height:56px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fffdf7, #f3e6c4 60%, #d9bd7c 100%);
+    border:2px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 18px -6px rgba(122,19,21,0.4);
+    flex-shrink:0;overflow:hidden;
+    transition:transform .4s ease;
+  }
+  .brand:hover .brand-badge{transform:rotate(-6deg) scale(1.05);}
+  .brand-badge img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;}
+  .brand-text .name{font-family:'Playfair Display',serif;font-weight:700;font-size:19px;letter-spacing:0.5px;color:var(--red-deep);line-height:1;}
+  .brand-text .tag{font-size:10px;letter-spacing:2.6px;text-transform:uppercase;color:var(--gold-dim);margin-top:5px;font-weight:600;}
+
+  nav.desktop-nav{display:flex;gap:2px;align-items:center;}
+  nav.desktop-nav a{
+    padding:9px 14px;font-size:13.5px;font-weight:500;color:var(--ink);
+    border-radius:30px;transition:background .3s, color .3s;white-space:nowrap;
+  }
+  nav.desktop-nav a:hover{background:rgba(122,19,21,0.08);color:var(--red);}
+  .nav-cta{
+    margin-left:8px;padding:11px 24px;border-radius:30px;
+    background:linear-gradient(120deg,var(--red),var(--red-light));
+    color:var(--white)!important;font-weight:600;font-size:13.5px;
+    box-shadow:0 10px 22px -10px rgba(122,19,21,.7);
+    border:1px solid var(--gold-light);
+  }
+  .nav-cta:hover{filter:brightness(1.08);}
+
+  .hamburger{
+    display:none;flex-direction:column;justify-content:center;gap:5px;
+    width:44px;height:44px;border-radius:50%;border:1px solid rgba(122,19,21,.25);
+    background:var(--white);
+  }
+  .hamburger span{width:20px;height:2px;background:var(--red);margin:0 auto;transition:.3s;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-nav{
+    position:fixed;top:0;right:0;height:100vh;width:min(320px,84vw);
+    background:linear-gradient(180deg,var(--red-deep),var(--red));
+    z-index:1100;transform:translateX(100%);transition:transform .45s cubic-bezier(.77,0,.18,1);
+    padding:100px 30px 40px;overflow-y:auto;
+    box-shadow:-20px 0 60px rgba(0,0,0,.35);
+  }
+  .mobile-nav.open{transform:translateX(0);}
+  .mobile-nav a{
+    display:block;padding:14px 4px;color:var(--cream);font-size:16px;
+    border-bottom:1px solid rgba(255,255,255,.12);font-weight:500;letter-spacing:.3px;
+  }
+  .mobile-nav a:hover{color:var(--gold-light);}
+  .mobile-nav .mn-close{position:absolute;top:26px;right:26px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.12);color:var(--cream);border:none;font-size:20px;}
+  .scrim{position:fixed;inset:0;background:rgba(20,8,7,.45);z-index:1050;opacity:0;visibility:hidden;transition:opacity .4s;}
+  .scrim.show{opacity:1;visibility:visible;}
+
+  @media(max-width:980px){
+    nav.desktop-nav{display:none;}
+    .hamburger{display:flex;}
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    background:linear-gradient(180deg, rgba(24,10,8,.55), rgba(24,10,8,.72)),
+      url('https://i.ibb.co/Lzxt8NB6/d377aea0e153018afd4ad6afebc39860.jpg') center 30%/cover no-repeat;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 100%, rgba(199,154,62,.28), transparent 60%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:2;padding-top:120px;padding-bottom:60px;}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:10px;padding:9px 18px 9px 9px;
+    background:rgba(251,246,236,.12);border:1px solid rgba(232,203,122,.5);
+    border-radius:40px;margin-bottom:30px;backdrop-filter:blur(6px);
+  }
+  .hero-badge .dot{width:34px;height:34px;border-radius:50%;overflow:hidden;background:#fff;flex-shrink:0;}
+  .hero-badge .dot img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;}
+  .hero-badge span{color:var(--gold-light);font-size:12.5px;letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+  .hero h1{
+    font-size:clamp(40px,7vw,80px);color:var(--white);line-height:1.04;font-weight:800;
+    max-width:900px;text-shadow:0 10px 40px rgba(0,0,0,.35);
+  }
+  .hero h1 em{font-style:italic;color:var(--gold-light);font-weight:600;}
+  .hero p.lead{
+    color:rgba(251,246,236,.88);font-size:18px;max-width:560px;margin-top:26px;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:42px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:40px;
+    font-weight:600;font-size:14.5px;letter-spacing:.4px;transition:transform .3s, box-shadow .3s, background .3s;border:none;
+  }
+  .btn-primary{
+    background:linear-gradient(120deg,var(--gold),#b5872f);color:var(--ink);
+    box-shadow:0 16px 34px -14px rgba(199,154,62,.75);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px -14px rgba(199,154,62,.9);}
+  .btn-outline{
+    background:transparent;color:var(--cream);border:1px solid rgba(251,246,236,.5);
+  }
+  .btn-outline:hover{background:rgba(251,246,236,.12);transform:translateY(-3px);}
+  .hero-stats{
+    display:flex;gap:40px;margin-top:70px;flex-wrap:wrap;
+  }
+  .hero-stats div strong{display:block;font-family:'Playfair Display',serif;font-size:30px;color:var(--gold-light);}
+  .hero-stats div span{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(251,246,236,.75);}
+  .scroll-cue{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(251,246,236,.7);
+    font-size:11px;letter-spacing:2px;text-transform:uppercase;z-index:2;
+  }
+  .scroll-cue .line{width:1px;height:34px;background:linear-gradient(180deg,var(--gold-light),transparent);animation:scrollcue 1.8s infinite;}
+  @keyframes scrollcue{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}50.01%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+  /* ===== Trail (experiences) wrapper ===== */
+  .trail{position:relative;}
+  .trail::before{
+    content:"";position:absolute;left:52px;top:10px;bottom:10px;width:2px;
+    background:repeating-linear-gradient(180deg,var(--gold) 0 8px, transparent 8px 16px);
+    opacity:.55;
+  }
+  @media(max-width:900px){.trail::before{display:none;}}
+
+  .exp-section{padding:96px 0;}
+  .exp-section:nth-of-type(even){background:var(--cream-dim);}
+  .exp-head{display:flex;gap:26px;align-items:flex-start;margin-bottom:46px;position:relative;}
+  .exp-node{
+    width:104px;height:104px;border-radius:50%;flex-shrink:0;
+    background:linear-gradient(145deg,var(--red),var(--red-deep));
+    border:3px solid var(--gold);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:var(--gold-light);box-shadow:var(--shadow-sm);position:relative;z-index:2;
+  }
+  .exp-node .num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--white);}
+  .exp-node .stop{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-top:2px;}
+  @media(max-width:900px){.exp-node{width:76px;height:76px;}.exp-node .num{font-size:20px;}}
+  @media(max-width:560px){.exp-head{flex-direction:column;}}
+
+  .exp-copy h2{font-size:clamp(28px,3.6vw,40px);margin-bottom:12px;}
+  .exp-copy p{max-width:600px;font-size:16px;}
+
+  .gallery{display:grid;gap:22px;}
+  .gallery.g3{grid-template-columns:repeat(3,1fr);}
+  .gallery.g2{grid-template-columns:repeat(2,1fr);}
+  .gallery.g1{grid-template-columns:1fr;}
+  @media(max-width:800px){.gallery.g3,.gallery.g2{grid-template-columns:1fr;}}
+
+  .photo-card{
+    position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;
+    box-shadow:var(--shadow-sm);border:1px solid rgba(199,154,62,.25);
+    transition:transform .55s cubic-bezier(.2,.8,.2,1), box-shadow .55s;
+  }
+  .gallery.g1 .photo-card{aspect-ratio:16/8;}
+  .photo-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);}
+  .photo-card img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;}
+  .photo-card:hover img{transform:scale(1.08);}
+  .photo-card .tag{
+    position:absolute;left:14px;bottom:14px;padding:8px 16px;border-radius:30px;
+    background:rgba(20,8,7,.55);backdrop-filter:blur(6px);color:var(--cream);
+    font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;
+    border:1px solid rgba(232,203,122,.4);
+  }
+  .photo-card .corner{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(251,246,236,.9);display:flex;align-items:center;justify-content:center;color:var(--red);font-size:15px;}
+
+  /* Big Five species chips */
+  .species-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
+  .species-chip{
+    padding:10px 20px;border-radius:30px;background:var(--white);
+    border:1px solid rgba(199,154,62,.4);font-size:13.5px;font-weight:600;color:var(--red-deep);
+    display:flex;align-items:center;gap:8px;box-shadow:var(--shadow-sm);
+  }
+  .species-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);}
+
+  .feature-banner{
+    position:relative;border-radius:26px;overflow:hidden;min-height:480px;
+    display:flex;align-items:flex-end;box-shadow:var(--shadow);
+  }
+  .feature-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform 1s ease;}
+  .feature-banner:hover img{transform:scale(1.08);}
+  .feature-banner::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg, rgba(15,6,5,.86) 5%, rgba(15,6,5,.15) 55%, transparent 80%);}
+  .feature-banner .fb-copy{position:relative;z-index:2;padding:44px;max-width:640px;}
+  .feature-banner .fb-copy h3{color:var(--white);font-size:clamp(26px,3.4vw,36px);margin-bottom:10px;}
+  .feature-banner .fb-copy p{color:rgba(251,246,236,.85);}
+
+  /* ===== Destinations ===== */
+  .dest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:900px){.dest-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.dest-grid{grid-template-columns:1fr;}}
+  .dest-card{
+    background:var(--white);border-radius:var(--radius);padding:30px 26px;
+    border:1px solid rgba(199,154,62,.28);box-shadow:var(--shadow-sm);
+    transition:transform .4s, box-shadow .4s, border-color .4s;position:relative;overflow:hidden;
+  }
+  .dest-card::before{
+    content:"";position:absolute;top:-40px;right:-40px;width:110px;height:110px;border-radius:50%;
+    background:radial-gradient(circle,rgba(199,154,62,.18),transparent 70%);
+  }
+  .dest-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--gold);}
+  .dest-num{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold-dim);font-size:14px;margin-bottom:14px;display:block;}
+  .dest-card h4{font-size:21px;margin-bottom:10px;color:var(--red-deep);}
+  .dest-card p{font-size:14.5px;}
+  .dest-pin{
+    width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--red-light));
+    display:flex;align-items:center;justify-content:center;color:var(--gold-light);margin-bottom:18px;font-size:18px;
+  }
+
+  /* ===== Why choose us ===== */
+  .why-wrap{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;align-items:center;}
+  @media(max-width:900px){.why-wrap{grid-template-columns:1fr;}}
+  .why-visual{
+    border-radius:26px;overflow:hidden;position:relative;min-height:460px;
+    background:url('https://i.ibb.co/4nyZ62NX/3f2622d904760bfcb4dcbf23f03ba972.jpg') center/cover;
+    box-shadow:var(--shadow);
+  }
+  .why-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg, rgba(122,19,21,.35), transparent 60%);}
+  .why-badge{
+    position:absolute;bottom:24px;left:24px;background:var(--white);padding:18px 22px;border-radius:16px;
+    box-shadow:var(--shadow-sm);display:flex;gap:14px;align-items:center;
+  }
+  .why-badge strong{display:block;font-family:'Playfair Display',serif;font-size:26px;color:var(--red-deep);}
+  .why-badge span{font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft);}
+  .why-list{display:grid;gap:22px;}
+  .why-item{display:flex;gap:18px;padding:22px;border-radius:16px;background:var(--white);border:1px solid rgba(199,154,62,.22);box-shadow:var(--shadow-sm);transition:transform .35s;}
+  .why-item:hover{transform:translateX(6px);}
+  .why-ic{
+    width:50px;height:50px;border-radius:14px;flex-shrink:0;background:linear-gradient(135deg,var(--gold-light),var(--gold));
+    display:flex;align-items:center;justify-content:center;font-size:21px;color:var(--red-deep);
+  }
+  .why-item h4{font-size:18px;margin-bottom:6px;color:var(--red-deep);}
+  .why-item p{font-size:14.5px;}
+
+  /* ===== Rate us ===== */
+  .rate-section{
+    background:linear-gradient(135deg,var(--red-deep),var(--red) 55%, var(--red-light));
+    position:relative;overflow:hidden;
+  }
+  .rate-section::before{
+    content:"";position:absolute;inset:0;opacity:.15;
+    background-image:radial-gradient(circle,var(--gold-light) 1.5px,transparent 1.5px);
+    background-size:26px 26px;
+  }
+  .rate-box{
+    position:relative;z-index:2;max-width:620px;margin:0 auto;text-align:center;
+    background:rgba(251,246,236,.06);border:1px solid rgba(232,203,122,.35);
+    border-radius:26px;padding:56px 40px;backdrop-filter:blur(4px);
+  }
+  .rate-box .eyebrow{color:var(--gold-light);}
+  .rate-box .eyebrow::before{background:var(--gold-light);}
+  .rate-box h2{color:var(--white);font-size:clamp(26px,3.4vw,36px);margin-bottom:14px;}
+  .rate-box p{color:rgba(251,246,236,.82);max-width:440px;margin:0 auto;}
+  .stars{display:flex;justify-content:center;gap:10px;margin:34px 0 14px;}
+  .star-btn{
+    background:none;border:none;font-size:44px;line-height:1;color:rgba(251,246,236,.3);
+    transition:transform .25s, color .25s;
+  }
+  .star-btn:hover{transform:scale(1.15);}
+  .star-btn.active,.star-btn.hovered{color:var(--gold-light);text-shadow:0 0 18px rgba(232,203,122,.6);}
+  .rate-msg{color:var(--gold-light);font-size:14px;min-height:20px;font-weight:600;letter-spacing:.3px;}
+
+  /* ===== Reviews ===== */
+  .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:60px;}
+  @media(max-width:900px){.review-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:620px){.review-grid{grid-template-columns:1fr;}}
+  .review-card{
+    background:var(--white);border-radius:var(--radius);padding:28px;border:1px solid rgba(199,154,62,.24);
+    box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:14px;transition:transform .35s;
+  }
+  .review-card:hover{transform:translateY(-6px);}
+  .review-stars{color:var(--gold);font-size:16px;letter-spacing:2px;}
+  .review-quote{font-size:14.5px;color:var(--ink-soft);font-style:italic;flex-grow:1;}
+  .review-person{display:flex;align-items:center;gap:12px;margin-top:6px;}
+  .review-avatar{
+    width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--gold));
+    display:flex;align-items:center;justify-content:center;color:var(--white);font-family:'Playfair Display',serif;font-weight:700;
+  }
+  .review-person strong{display:block;font-size:14px;color:var(--ink);}
+  .review-person span{font-size:12px;color:var(--ink-soft);}
+
+  .review-form-wrap{
+    background:var(--white);border-radius:26px;padding:44px;border:1px solid rgba(199,154,62,.28);
+    box-shadow:var(--shadow-sm);max-width:720px;margin:0 auto;
+  }
+  .review-form-wrap h3{font-size:24px;margin-bottom:6px;color:var(--red-deep);}
+  .review-form-wrap > p{margin-bottom:26px;font-size:14.5px;}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:560px){.form-grid{grid-template-columns:1fr;}}
+  .field{display:flex;flex-direction:column;gap:7px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft);font-weight:600;}
+  .field input,.field select,.field textarea{
+    padding:13px 16px;border-radius:12px;border:1px solid rgba(90,50,40,.22);
+    background:var(--cream);font-family:'Jost',sans-serif;font-size:14.5px;color:var(--ink);
+    transition:border-color .3s, box-shadow .3s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(199,154,62,.18);}
+  .field textarea{resize:vertical;min-height:100px;}
+  .mini-stars{display:flex;gap:6px;font-size:22px;}
+  .mini-stars .star-btn{font-size:26px;}
+
+  /* ===== Ad cards ===== */
+  .ad-strip{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px;}
+  @media(max-width:700px){.ad-strip{grid-template-columns:1fr;}}
+  .ad-card{
+    position:relative;display:flex;gap:16px;align-items:center;background:var(--cream-dim);
+    border:1px dashed rgba(199,154,62,.55);border-radius:16px;padding:18px 20px;
+    transition:opacity .4s, transform .4s;
+  }
+  .ad-card.hidden{opacity:0;transform:scale(.9);pointer-events:none;position:absolute;}
+  .ad-card .ad-ic{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--gold-light),var(--gold));flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--red-deep);}
+  .ad-card .ad-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-dim);font-weight:700;margin-bottom:4px;}
+  .ad-card h5{font-size:15px;margin-bottom:4px;color:var(--ink);}
+  .ad-card p{font-size:12.5px;}
+  .ad-close{
+    position:absolute;top:10px;right:10px;width:24px;height:24px;border-radius:50%;
+    background:var(--white);border:1px solid rgba(122,19,21,.2);color:var(--red);font-size:13px;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* ===== Floating popup ads (slide up from bottom) ===== */
+  .floating-ads{
+    position:fixed;left:0;right:0;bottom:0;z-index:1250;
+    display:flex;justify-content:center;pointer-events:none;
+    padding:0 20px 22px;
+  }
+  .floating-ads-inner{width:100%;max-width:380px;display:flex;flex-direction:column;gap:12px;}
+  .float-ad{
+    pointer-events:auto;position:relative;display:flex;gap:14px;align-items:center;
+    background:var(--white);border:1px solid rgba(199,154,62,.45);border-radius:18px;
+    padding:16px 40px 16px 16px;box-shadow:0 20px 45px -14px rgba(35,21,18,.45);
+    transform:translateY(140%);opacity:0;transition:transform .55s cubic-bezier(.2,.85,.25,1), opacity .5s;
+  }
+  .float-ad.show{transform:translateY(0);opacity:1;}
+  .float-ad.dismissed{transform:translateY(140%);opacity:0;}
+  .float-ad img{width:56px;height:56px;border-radius:12px;object-fit:cover;flex-shrink:0;border:1px solid rgba(199,154,62,.3);}
+  .float-ad .fa-label{font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-dim);font-weight:700;margin-bottom:3px;}
+  .float-ad h5{font-size:14px;color:var(--ink);margin-bottom:3px;line-height:1.3;}
+  .float-ad p{font-size:12px;color:var(--ink-soft);}
+  .float-ad .fa-close{
+    position:absolute;top:10px;right:10px;width:24px;height:24px;border-radius:50%;
+    background:var(--cream-dim);border:1px solid rgba(122,19,21,.18);color:var(--red);
+    font-size:12px;display:flex;align-items:center;justify-content:center;line-height:1;flex-shrink:0;
+    transition:background .25s, transform .25s;
+  }
+  .float-ad .fa-close:hover{background:var(--red);color:var(--white);transform:scale(1.08);}
+  @media(max-width:480px){.floating-ads{padding:0 12px 14px;}}
+
+  /* ===== Booking ===== */
+  .booking-section{
+    background:linear-gradient(180deg,var(--cream-dim),var(--cream));
+  }
+  .booking-wrap{display:grid;grid-template-columns:0.9fr 1.1fr;gap:0;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);}
+  @media(max-width:900px){.booking-wrap{grid-template-columns:1fr;}}
+  .booking-side{
+    background:linear-gradient(160deg,var(--red-deep),var(--red) 70%);
+    padding:52px 44px;color:var(--cream);position:relative;overflow:hidden;
+  }
+  .booking-side::before{content:"";position:absolute;bottom:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(232,203,122,.22),transparent 70%);}
+  .booking-side .eyebrow{color:var(--gold-light);}
+  .booking-side .eyebrow::before{background:var(--gold-light);}
+  .booking-side h2{color:var(--white);font-size:clamp(26px,3vw,34px);margin-bottom:16px;}
+  .booking-side p{color:rgba(251,246,236,.82);margin-bottom:34px;}
+  .contact-line{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+  .contact-ic{width:44px;height:44px;border-radius:50%;background:rgba(251,246,236,.14);border:1px solid rgba(232,203,122,.4);display:flex;align-items:center;justify-content:center;color:var(--gold-light);font-size:17px;flex-shrink:0;}
+  .contact-line strong{display:block;font-size:15px;color:var(--white);}
+  .contact-line span{font-size:12.5px;color:rgba(251,246,236,.7);}
+  .booking-form{background:var(--white);padding:52px 44px;}
+  .booking-form h3{font-size:22px;color:var(--red-deep);margin-bottom:6px;}
+  .booking-form > p{margin-bottom:28px;font-size:14px;}
+  .submit-btn{
+    margin-top:8px;width:100%;padding:16px;border-radius:14px;border:none;
+    background:linear-gradient(120deg,var(--red),var(--red-light));color:var(--white);
+    font-weight:600;font-size:15px;letter-spacing:.4px;box-shadow:0 14px 28px -14px rgba(122,19,21,.6);
+    transition:transform .3s, filter .3s;
+  }
+  .submit-btn:hover{transform:translateY(-2px);filter:brightness(1.07);}
+  .form-note{font-size:12px;color:var(--ink-soft);margin-top:14px;text-align:center;}
+  .toast{
+    position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--red-deep);color:var(--cream);padding:16px 26px;border-radius:14px;
+    font-size:14px;box-shadow:var(--shadow);z-index:1300;opacity:0;pointer-events:none;
+    transition:opacity .4s, transform .4s;border:1px solid var(--gold);
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* ===== Footer ===== */
+  footer{background:var(--ink);color:rgba(251,246,236,.8);padding:70px 0 26px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:44px;padding-bottom:44px;border-bottom:1px solid rgba(251,246,236,.12);}
+  @media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.foot-grid{grid-template-columns:1fr;}}
+  .foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+  .foot-brand .brand-badge{width:50px;height:50px;}
+  .foot-brand .name{color:var(--cream);font-family:'Playfair Display',serif;font-size:18px;font-weight:700;}
+  footer h5{color:var(--gold-light);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
+  footer ul li{margin-bottom:11px;font-size:14px;}
+  footer ul li a:hover{color:var(--gold-light);}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:24px;font-size:12.5px;color:rgba(251,246,236,.5);}
+  .socials{display:flex;gap:10px;}
+  .socials a{width:38px;height:38px;border-radius:50%;background:rgba(251,246,236,.08);display:flex;align-items:center;justify-content:center;font-size:14px;border:1px solid rgba(251,246,236,.15);}
+  .socials a:hover{background:var(--gold);color:var(--ink);}
+
+  ::selection{background:var(--gold-light);color:var(--ink);}
+  .fp{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ===== HEADER ===== -->
+<header id="siteHeader">
+  <div class="wrap">
+    <a href="#home" class="brand">
+      <span class="brand-badge"><img src="https://i.ibb.co/Q3wbqm98/IMG-20260813-WA0000.jpg" alt="Nempiris Expeditions logo"></span>
+      <span class="brand-text">
+        <span class="name">Nempiris Expeditions</span>
+        <span class="tag">Luxury Safari Journeys</span>
+      </span>
+    </a>
+    <nav class="desktop-nav">
+      <a href="#home">Home</a>
+      <a href="#gamepark-drives">Gamepark Drives</a>
+      <a href="#balloon-safaris">Baloon Safaris</a>
+      <a href="#sundowner">Sundowner</a>
+      <a href="#manyatta-visit">Manyatta Visit</a>
+      <a href="#traditional-dance">Traditional Dance</a>
+      <a href="#big-five">Big Five</a>
+      <a href="#migration">Migration</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="#booking" class="nav-cta">Book Now</a>
+    </nav>
+    <button class="hamburger" id="hamBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="scrim" id="scrim"></div>
+<nav class="mobile-nav" id="mobileNav">
+  <button class="mn-close" id="mnClose" aria-label="Close menu">✕</button>
+  <a href="#home">Home</a>
+  <a href="#gamepark-drives">Gamepark Drives</a>
+  <a href="#balloon-safaris">Baloon Safaris</a>
+  <a href="#sundowner">Sundowner</a>
+  <a href="#manyatta-visit">Manyatta Visit</a>
+  <a href="#traditional-dance">Traditional Dance</a>
+  <a href="#big-five">Big Five</a>
+  <a href="#migration">Wildbeests Migration</a>
+  <a href="#destinations">Our Destinations</a>
+  <a href="#why-us">Why Choose Us</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#booking">Booking</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hero-badge">
+      <span class="dot"><img src="https://i.ibb.co/Q3wbqm98/IMG-20260813-WA0000.jpg" alt="logo"></span>
+      <span>Kenya &amp; Tanzania · Bespoke Safaris</span>
+    </div>
+    <h1>The wild, <em>uncompromised.</em><br>Journeys crafted for you.</h1>
+    <p class="lead">Nempiris Expeditions designs intimate, fully-tailored safaris across East Africa's most storied landscapes — from dawn game drives to balloon flights over the Mara.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn btn-primary">Plan Your Expedition</a>
+      <a href="#gamepark-drives" class="btn btn-outline">Explore Experiences</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong>9</strong><span>Destinations</span></div>
+      <div><strong>7</strong><span>Signature Experiences</span></div>
+      <div><strong>2</strong><span>Countries Covered</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<!-- ===== TRAIL / EXPERIENCES ===== -->
+<div class="trail">
+
+  <!-- 1 GAMEPARK DRIVES -->
+  <section class="exp-section" id="gamepark-drives">
+    <div class="wrap">
+      <div class="exp-head reveal">
+        <div class="exp-node"><span class="num">01</span><span class="stop">Stop</span></div>
+        <div class="exp-copy">
+          <span class="eyebrow">Signature Experience</span>
+          <h2>Gamepark Drives</h2>
+          <p>Rise before the sun and track the plains in an open-sided 4x4 with a Maasai naturalist guide. Every drive is unhurried and private — reading fresh tracks, following the light, and closing the distance to the animals that call this savannah home.</p>
+        </div>
+      </div>
+      <div class="gallery g3 reveal">
+        <div class="photo-card">
+          <img src="https://i.ibb.co/pBk82q3w/f34e5e73f5f11162ed586bbcc63e5232.jpg" alt="Game drive across the savannah at golden hour">
+          <span class="tag">Golden Hour Drive</span>
+        </div>
+        <div class="photo-card">
+          <img src="https://i.ibb.co/wFG1n6t3/f97019de628aac44821bd272040ce313.jpg" alt="4x4 safari vehicle tracking wildlife">
+          <span class="tag">Tracking the Herd</span>
+        </div>
+        <div class="photo-card">
+          <img src="https://i.ibb.co/RkZh0jwN/505608ea99b183d252b72acb7d8f26be.jpg" alt="Guests on a private game drive">
+          <span class="tag">Private Sightings</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 BALLOON SAFARIS -->
+  <section class="exp-section" id="balloon-safaris">
+    <div class="wrap">
+      <div class="exp-head reveal">
+        <div class="exp-node"><span class="num">02</span><span class="stop">Stop</span></div>
+        <div class="exp-copy">
+          <span class="eyebrow">Signature Experience</span>
+          <h2>Baloon Safaris</h2>
+          <p>Lift silently into the dawn sky and watch the Mara unfold beneath you — migrating herds, winding rivers and acacia-dotted plains stretching to the horizon. Every flight ends with a champagne breakfast set out on the open savannah.</p>
+        </div>
+      </div>
+      <div class="gallery g2 reveal">
+        <div class="photo-card">
+          <img src="https://i.ibb.co/d0MJrmcn/376ce98c0d7baf31c2ae697303a99127.jpg" alt="Hot air balloon rising over the savannah at sunrise">
+          <span class="tag">Sunrise Ascent</span>
+        </div>
+        <div class="photo-card">
+          <img src="https://i.ibb.co/Y4HFCkfs/ef0e56d2ffca55b68c03ddbc03e68175.jpg" alt="Balloon safari floating above wildlife plains">
+          <span class="tag">Bird's-eye Mara</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 SUNDOWNER -->
+  <section class="exp-section" id="sundowner">
+    <div class="wrap">
+      <div class="exp-head reveal">
+        <div class="exp-node"><span class="num">03</span><span class="stop">Stop</span></div>
+        <div class="exp-copy">
+          <span class="eyebrow">Signature Experience</span>
+          <h2>Sundowner</h2>
+          <p>As the plains turn amber, we lay out a private bar on a chosen escarpment — hand-poured cocktails, warm canapés, and uninterrupted views as the African sun sinks below the horizon.</p>
+        </div>
+      </div>
+      <div class="gallery g1 reveal">
+        <div class="photo-card">
+          <img src="https://i.ibb.co/4RsFBk7z/2d1b866e2d1cf8261c240d654e242449.jpg" alt="Sundowner drinks setup overlooking the savannah at sunset">
+          <span class="tag">Golden Sundowner</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 MANYATTA VISIT -->
+  <section class="exp-section" id="manyatta-visit">
+    <div class="wrap">
+      <div class="exp-head reveal">
+        <div class="exp-node"><span class="num">04</span><span class="stop">Stop</span></div>
+        <div class="exp-copy">
+          <span class="eyebrow">Signature Experience</span>
+          <h2>Manyatta Visit</h2>
+          <p>Step inside a living Maasai homestead and meet the families who have shared this land with wildlife for generations. Learn how a manyatta is built, hear its stories, and leave with a deeper understanding of Maasai life.</p>
+        </div>
+      </div>
+      <div class="gallery g2 reveal">
+        <div class="photo-card">
+          <img src="https://i.ibb.co/V0N9Xxqj/7d1c77dbaf6ac1db4ea723819bb03006.jpg" alt="Traditional Maasai manyatta homestead">
+          <span class="tag">Village Life</span>
+        </div>
+        <div class="photo-card">
+          <img src="https://i.ibb.co/67xBwczT/8dab23dfc73f78e3652ff63e8c0c3f0f.jpg" alt="Maasai community welcoming visitors">
+          <span class="tag">Warm Welcome</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 TRADITIONAL DANCE -->
+  <section class="exp-section" id="traditional-dance">
+    <div class="wrap">
+      <div class="exp-head reveal">
+        <div class="exp-node"><span class="num">05</span><span class="stop">Stop</span></div>
+        <div class="exp-copy">
+          <span class="eyebrow">Signature Experience</span>
+          <h2>Traditional Dance</h2>
+          <p>Feel the rhythm of the Adumu — the Maasai jumping dance — performed in vivid shuka cloth and beadwork passed through generations. A vibrant, high-energy celebration of culture and pride.</p>
+        </div>
+      </div>
+      <div class="gallery g3 reveal">
+        <div class="photo-card">
+          <img src="https://i.ibb.co/W4jrYcNr/267a1c80f48a657bd59ba7424657f6bd.jpg" alt="Maasai warriors performing the traditional jumping dance">
+          <span class="tag">The Adumu</span>
+        </div>
+        <div class="photo-card">
+          <img src="https://i.ibb.co/vxkSGBNX/8b318607c70a89bb09d9f2e7f9b9a303.jpg" alt="Maasai dancers in traditional beadwork">
+          <span class="tag">Beaded Heritage</span>
+        </div>
+        <div class="photo-card">
+          <img src="https://i.ibb.co/QFSQ3jdZ/efae8ca5f2f09358eb8efc49e6c66828.jpg" alt="Cultural dance performance by the Maasai community">
+          <span class="tag">Living Culture</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 BIG FIVE -->
+  <section class="exp-section" id="big-five">
+    <div class="wrap">
+      <div class="exp-head reveal">
+        <div class="exp-node"><span class="num">06</span><span class="stop">Stop</span></div>
+        <div class="exp-copy">
+          <span class="eyebrow">Signature Experience</span>
+          <h2>Big Five</h2>
+          <p>Lion, leopard, elephant, buffalo and rhino — the five icons that defined African safari. Our guides know their territories, their habits, and the patience it takes to bring you face to face with each one.</p>
+          <div class="species-row">
+            <span class="species-chip">Lion</span>
+            <span class="species-chip">Leopard</span>
+            <span class="species-chip">Elephant</span>
+            <span class="species-chip">Buffalo</span>
+            <span class="species-chip">Rhino</span>
+          </div>
+        </div>
+      </div>
+      <div class="feature-banner reveal">
+        <img src="https://i.ibb.co/Lzxt8NB6/d377aea0e153018afd4ad6afebc39860.jpg" alt="Big Five wildlife in their natural habitat">
+        <div class="fb-copy">
+          <h3>Face to face with royalty</h3>
+          <p>Close, respectful, unforgettable encounters with Africa's most iconic wildlife.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 WILDBEESTS MIGRATION -->
+  <section class="exp-section" id="migration">
+    <div class="wrap">
+      <div class="exp-head reveal">
+        <div class="exp-node"><span class="num">07</span><span class="stop">Stop</span></div>
+        <div class="exp-copy">
+          <span class="eyebrow">Signature Experience</span>
+          <h2>Wildbeests Migration</h2>
+          <p>Witness the greatest wildlife spectacle on earth — over a million wildebeest and zebra thundering across the Mara River. Timed perfectly, positioned for the best vantage, and utterly unforgettable.</p>
+        </div>
+      </div>
+      <div class="feature-banner reveal">
+        <img src="https://i.ibb.co/4nyZ62NX/3f2622d904760bfcb4dcbf23f03ba972.jpg" alt="Wildebeest migration crossing the Mara River">
+        <div class="fb-copy">
+          <h3>The Great Migration</h3>
+          <p>A river-crossing spectacle that draws travellers from every corner of the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /trail -->
+
+<!-- ===== DESTINATIONS ===== -->
+<section id="destinations">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow" style="justify-content:center;">Where We Take You</span>
+      <h2>Our Destinations</h2>
+      <p>Nine of East Africa's finest landscapes, each with its own light, wildlife and rhythm — choose one or weave several into a single expedition.</p>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card reveal"><span class="dest-num">Site No. 01</span><div class="dest-pin">◆</div><h4>Maasai Mara Game Reserve</h4><p>Kenya's crown jewel — endless plains, the Mara River and the world's greatest wildlife migration.</p></div>
+      <div class="dest-card reveal"><span class="dest-num">Site No. 02</span><div class="dest-pin">◆</div><h4>Amboseli</h4><p>Sweeping herds of elephant framed against the snow-capped silhouette of Mount Kilimanjaro.</p></div>
+      <div class="dest-card reveal"><span class="dest-num">Site No. 03</span><div class="dest-pin">◆</div><h4>Tanzania</h4><p>The Serengeti and beyond — vast, wild and home to some of Africa's richest ecosystems.</p></div>
+      <div class="dest-card reveal"><span class="dest-num">Site No. 04</span><div class="dest-pin">◆</div><h4>Tsavo</h4><p>Red-earth plains and Kenya's largest protected wilderness, famed for its red elephants.</p></div>
+      <div class="dest-card reveal"><span class="dest-num">Site No. 05</span><div class="dest-pin">◆</div><h4>Lake Nakuru</h4><p>A shimmering soda lake ringed by flamingos, rhino sanctuaries and acacia woodland.</p></div>
+      <div class="dest-card reveal"><span class="dest-num">Site No. 06</span><div class="dest-pin">◆</div><h4>Lake Naivasha</h4><p>Tranquil waters, boat rides among hippos, and gateway to Hell's Gate National Park.</p></div>
+      <div class="dest-card reveal"><span class="dest-num">Site No. 07</span><div class="dest-pin">◆</div><h4>Nairobi</h4><p>Kenya's vibrant capital — wildlife on the city's doorstep and the start of every expedition.</p></div>
+      <div class="dest-card reveal"><span class="dest-num">Site No. 08</span><div class="dest-pin">◆</div><h4>Samburu National Park</h4><p>Rugged northern wilderness, home to rare species found nowhere else in Kenya.</p></div>
+      <div class="dest-card reveal"><span class="dest-num">Site No. 09</span><div class="dest-pin">◆</div><h4>Mt Kenya National Park</h4><p>Africa's second-highest peak — alpine trails, forest zones and dramatic highland scenery.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE US ===== -->
+<section id="why-us" style="background:var(--cream-dim);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Nempiris Difference</span>
+      <h2>Why Choose Us</h2>
+      <p>We build every itinerary around you — not a fixed brochure package. Here's what that means once you're on the ground.</p>
+    </div>
+    <div class="why-wrap">
+      <div class="why-visual reveal">
+        <div class="why-badge">
+          <div>
+            <strong>15+</strong>
+            <span>Years Combined Guiding</span>
+          </div>
+        </div>
+      </div>
+      <div class="why-list reveal">
+        <div class="why-item">
+          <div class="why-ic">✦</div>
+          <div><h4>Local, Expert Guides</h4><p>Our guides are born of this land — trackers, naturalists and storytellers who know every trail and every herd.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="why-ic">✦</div>
+          <div><h4>Fully Tailored Itineraries</h4><p>No fixed packages. We design each expedition around your time, pace and interests.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="why-ic">✦</div>
+          <div><h4>Safety &amp; Reliability</h4><p>Well-maintained vehicles, licensed operators and guides trained in first response, every trip out.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="why-ic">✦</div>
+          <div><h4>Authentic Cultural Access</h4><p>Genuine, respectful relationships with Maasai communities you won't find on a mass-market tour.</p></div>
+        </div>
+        <div class="why-item">
+          <div class="why-ic">✦</div>
+          <div><h4>Honest, Fair Pricing</h4><p>Transparent quotes with no hidden costs — you know exactly what your expedition includes.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RATE US ===== -->
+<section class="rate-section">
+  <div class="wrap">
+    <div class="rate-box reveal">
+      <span class="eyebrow" style="justify-content:center;">Your Voice Matters</span>
+      <h2>Rate Your Experience</h2>
+      <p>Been on an expedition with us? Tap a star and let us know how we did.</p>
+      <div class="stars" id="starRow">
+        <button class="star-btn" data-v="1">★</button>
+        <button class="star-btn" data-v="2">★</button>
+        <button class="star-btn" data-v="3">★</button>
+        <button class="star-btn" data-v="4">★</button>
+        <button class="star-btn" data-v="5">★</button>
+      </div>
+      <div class="rate-msg" id="rateMsg">&nbsp;</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow" style="justify-content:center;">Traveller Stories</span>
+      <h2>Reviews</h2>
+      <p>Real words from travellers who journeyed with Nempiris Expeditions.</p>
+    </div>
+
+    <div class="review-grid" id="reviewGrid">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"The balloon safari at sunrise was the highlight of our entire trip to Kenya. Flawlessly organized from start to finish."</p>
+        <div class="review-person">
+          <div class="review-avatar">A</div>
+          <div><strong>Amara O.</strong><span>Maasai Mara Expedition</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Our guide found all of the Big Five in three days. Genuinely one of the most knowledgeable people we've travelled with."</p>
+        <div class="review-person">
+          <div class="review-avatar">D</div>
+          <div><strong>David K.</strong><span>Amboseli &amp; Tsavo Tour</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"The Manyatta visit and traditional dance were so respectful and genuine. It didn't feel staged at all — it felt real."</p>
+        <div class="review-person">
+          <div class="review-avatar">S</div>
+          <div><strong>Sofia R.</strong><span>Cultural Safari Package</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-form-wrap reveal">
+      <h3>Share Your Review</h3>
+      <p>Tell fellow travellers about your Nempiris Expeditions journey.</p>
+      <form id="reviewForm">
+        <div class="form-grid">
+          <div class="field"><label>Full Name</label><input type="text" required placeholder="Your name"></div>
+          <div class="field"><label>Trip / Experience</label><input type="text" placeholder="e.g. Balloon Safari, Big Five"></div>
+          <div class="field full"><label>Your Rating</label>
+            <div class="mini-stars" id="miniStars">
+              <button type="button" class="star-btn" data-v="1">★</button>
+              <button type="button" class="star-btn" data-v="2">★</button>
+              <button type="button" class="star-btn" data-v="3">★</button>
+              <button type="button" class="star-btn" data-v="4">★</button>
+              <button type="button" class="star-btn" data-v="5">★</button>
+            </div>
+          </div>
+          <div class="field full"><label>Your Review</label><textarea required placeholder="Tell us about your expedition..."></textarea></div>
+        </div>
+        <button type="submit" class="submit-btn">Submit Review</button>
+      </form>
+    </div>
+
+    <div class="ad-strip">
+      <div class="ad-card" id="ad1">
+        <button class="ad-close" data-target="ad1">✕</button>
+        <div class="ad-ic">✦</div>
+        <div>
+          <div class="ad-label">Recommended</div>
+          <h5>Extend your stay with a Naivasha boat ride</h5>
+          <p>Ask us to add it to your itinerary at booking.</p>
+        </div>
+      </div>
+      <div class="ad-card" id="ad2">
+        <button class="ad-close" data-target="ad2">✕</button>
+        <div class="ad-ic">✦</div>
+        <div>
+          <div class="ad-label">Popular Add-on</div>
+          <h5>Upgrade to a private balloon basket</h5>
+          <p>Limited availability during migration season.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOKING ===== -->
+<section class="booking-section" id="booking">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow" style="justify-content:center;">Let's Plan Your Trip</span>
+      <h2>Booking</h2>
+      <p>Tell us what you're dreaming of — we'll reply with a tailored itinerary within 24 hours.</p>
+    </div>
+
+    <div class="booking-wrap reveal">
+      <div class="booking-side">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Reserve Your Expedition</h2>
+        <p>Reach out directly, or fill in the form and our travel designers will take it from there.</p>
+        <div class="contact-line">
+          <div class="contact-ic">✉</div>
+          <div><strong>Nempirisexpedition@gmail.com</strong><span>Email us anytime</span></div>
+        </div>
+        <div class="contact-line">
+          <div class="contact-ic">☎</div>
+          <div><strong>0742 162 123</strong><span>Call or WhatsApp</span></div>
+        </div>
+        <div class="contact-line">
+          <div class="contact-ic">◆</div>
+          <div><strong>Nairobi, Kenya</strong><span>Based &amp; operating across East Africa</span></div>
+        </div>
+      </div>
+      <div class="booking-form">
+        <h3>Book Your Safari</h3>
+        <p>Fields marked required help us plan faster.</p>
+        <form id="bookingForm">
+          <div class="form-grid">
+            <div class="field"><label>Full Name *</label><input type="text" required placeholder="Your full name"></div>
+            <div class="field"><label>Email Address *</label><input type="email" required placeholder="you@example.com"></div>
+            <div class="field"><label>Phone Number</label><input type="tel" placeholder="+254 7xx xxx xxx"></div>
+            <div class="field"><label>Number of Travellers</label><input type="number" min="1" placeholder="e.g. 2"></div>
+            <div class="field"><label>Preferred Date</label><input type="date"></div>
+            <div class="field"><label>Experience</label>
+              <select>
+                <option>Gamepark Drives</option>
+                <option>Baloon Safaris</option>
+                <option>Sundowner</option>
+                <option>Manyatta Visit</option>
+                <option>Traditional Dance</option>
+                <option>Big Five</option>
+                <option>Wildbeests Migration</option>
+                <option>Full Custom Itinerary</option>
+              </select>
+            </div>
+            <div class="field full"><label>Tell Us More</label><textarea placeholder="Destinations, dates, group size, special requests..."></textarea></div>
+          </div>
+          <button type="submit" class="submit-btn">Request Booking</button>
+          <p class="form-note">We'll respond by email or phone within 24 hours to confirm your itinerary.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER / CONTACT ===== -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <span class="brand-badge"><img src="https://i.ibb.co/Q3wbqm98/IMG-20260813-WA0000.jpg" alt="Nempiris Expeditions logo"></span>
+          <span class="name">Nempiris Expeditions</span>
+        </div>
+        <p style="max-width:280px;">Bespoke luxury safaris across Kenya and Tanzania — crafted around you, guided by those who know the land best.</p>
+        <div class="socials" style="margin-top:22px;">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="X">x</a>
+        </div>
+      </div>
+      <div>
+        <h5>Experiences</h5>
+        <ul>
+          <li><a href="#gamepark-drives">Gamepark Drives</a></li>
+          <li><a href="#balloon-safaris">Baloon Safaris</a></li>
+          <li><a href="#sundowner">Sundowner</a></li>
+          <li><a href="#manyatta-visit">Manyatta Visit</a></li>
+          <li><a href="#traditional-dance">Traditional Dance</a></li>
+          <li><a href="#big-five">Big Five</a></li>
+          <li><a href="#migration">Wildbeests Migration</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#destinations">Our Destinations</a></li>
+          <li><a href="#why-us">Why Choose Us</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#booking">Booking</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li>✉ Nempirisexpedition@gmail.com</li>
+          <li>☎ 0742 162 123</li>
+          <li>Nairobi, Kenya</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Nempiris Expeditions. All rights reserved.</span>
+      <span>Crafted with <span class="fp">♦</span> for the wild</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Thank you — we've received your message.</div>
+
+<!-- ===== Floating popup ads ===== -->
+<div class="floating-ads" id="floatingAds">
+  <div class="floating-ads-inner">
+    <div class="float-ad" id="fa1" data-delay="2500">
+      <button class="fa-close" data-target="fa1" aria-label="Close ad">✕</button>
+      <img src="https://i.ibb.co/d0MJrmcn/376ce98c0d7baf31c2ae697303a99127.jpg" alt="Balloon safari offer">
+      <div>
+        <div class="fa-label">Limited Offer</div>
+        <h5>Sunrise Balloon Safari — book this week</h5>
+        <p>Save your spot before migration season fills up.</p>
+      </div>
+    </div>
+    <div class="float-ad" id="fa2" data-delay="9000">
+      <button class="fa-close" data-target="fa2" aria-label="Close ad">✕</button>
+      <img src="https://i.ibb.co/QFSQ3jdZ/efae8ca5f2f09358eb8efc49e6c66828.jpg" alt="Cultural experience offer">
+      <div>
+        <div class="fa-label">Guest Favourite</div>
+        <h5>Add a Manyatta &amp; Dance visit</h5>
+        <p>Most-loved add-on — ask us when you book.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* header scroll state + progress bar */
+const header = document.getElementById('siteHeader');
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 40);
+  const h = document.documentElement;
+  const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  progress.style.width = pct + '%';
+});
+
+/* mobile nav */
+const hamBtn = document.getElementById('hamBtn');
+const mobileNav = document.getElementById('mobileNav');
+const scrim = document.getElementById('scrim');
+const mnClose = document.getElementById('mnClose');
+function openNav(){ mobileNav.classList.add('open'); scrim.classList.add('show'); hamBtn.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeNav(){ mobileNav.classList.remove('open'); scrim.classList.remove('show'); hamBtn.classList.remove('open'); document.body.style.overflow=''; }
+hamBtn.addEventListener('click', () => mobileNav.classList.contains('open') ? closeNav() : openNav());
+mnClose.addEventListener('click', closeNav);
+scrim.addEventListener('click', closeNav);
+document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('click', closeNav));
+
+/* reveal on scroll */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* rate us stars */
+function wireStars(container, msgEl){
+  const btns = [...container.querySelectorAll('.star-btn')];
+  let selected = 0;
+  btns.forEach(btn => {
+    const v = +btn.dataset.v;
+    btn.addEventListener('mouseenter', () => paint(v, true));
+    btn.addEventListener('mouseleave', () => paint(selected, false));
+    btn.addEventListener('click', () => {
+      selected = v;
+      paint(selected, false);
+      if (msgEl) msgEl.textContent = 'Thank you for rating us ' + v + ' star' + (v>1?'s':'') + '!';
+      try{ localStorage.setItem('nempiris_rating', v); }catch(e){}
+    });
+  });
+  function paint(v, hover){
+    btns.forEach(b => {
+      const bv = +b.dataset.v;
+      b.classList.toggle('active', bv <= v && !hover);
+      b.classList.toggle('hovered', bv <= v && hover);
+    });
+  }
+}
+wireStars(document.getElementById('starRow'), document.getElementById('rateMsg'));
+wireStars(document.getElementById('miniStars'), null);
+
+/* toast helper */
+const toast = document.getElementById('toast');
+function showToast(msg){
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3600);
+}
+
+/* review form: append new review card client-side */
+document.getElementById('reviewForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const inputs = this.querySelectorAll('input');
+  const name = inputs[0].value.trim() || 'Traveller';
+  const trip = inputs[1].value.trim() || 'Nempiris Expedition';
+  const text = this.querySelector('textarea').value.trim();
+  const activeStars = this.querySelectorAll('#miniStars .star-btn.active').length || 5;
+
+  const grid = document.getElementById('reviewGrid');
+  const card = document.createElement('div');
+  card.className = 'review-card reveal in';
+  card.innerHTML = `
+    <div class="review-stars">${'★'.repeat(activeStars)}${'☆'.repeat(5-activeStars)}</div>
+    <p class="review-quote">"${text.replace(/</g,'&lt;')}"</p>
+    <div class="review-person">
+      <div class="review-avatar">${name.charAt(0).toUpperCase()}</div>
+      <div><strong>${name}</strong><span>${trip}</span></div>
+    </div>`;
+  grid.prepend(card);
+  this.reset();
+  document.querySelectorAll('#miniStars .star-btn').forEach(b=>b.classList.remove('active'));
+  showToast('Thank you — your review has been posted!');
+});
+
+/* booking form */
+document.getElementById('bookingForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  showToast('Thank you — your booking request has been sent. We\'ll be in touch shortly.');
+  this.reset();
+});
+
+/* dismissible ad cards (inline strip) */
+document.querySelectorAll('.ad-close').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.getElementById(btn.dataset.target).classList.add('hidden');
+  });
+});
+
+/* floating popup ads — slide up from bottom, dismissible, staggered, one at a time */
+(function(){
+  const cards = [...document.querySelectorAll('.float-ad')];
+  const dismissedKey = 'nempiris_ads_dismissed';
+  let dismissed = [];
+  try{ dismissed = JSON.parse(sessionStorage.getItem(dismissedKey) || '[]'); }catch(e){}
+
+  function showNext(index){
+    if (index >= cards.length) return;
+    const card = cards[index];
+    if (dismissed.includes(card.id)){ showNext(index+1); return; }
+    const delay = +card.dataset.delay || 3000;
+    setTimeout(() => {
+      card.classList.add('show');
+    }, delay);
+  }
+
+  cards.forEach((card, i) => showNext(i));
+
+  document.querySelectorAll('.fa-close').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.target;
+      const card = document.getElementById(id);
+      card.classList.remove('show');
+      card.classList.add('dismissed');
+      dismissed.push(id);
+      try{ sessionStorage.setItem(dismissedKey, JSON.stringify(dismissed)); }catch(e){}
+    });
+  });
+})();
+</script>
+</body>
+</html>
